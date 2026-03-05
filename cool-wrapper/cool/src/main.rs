@@ -8,7 +8,8 @@ fn main() {
         return;
     }
     let command = &args[1];
-    let res: String = fs::read_to_string(command).expect("Failed to read command file");
-    println!("Command output: \n---------\n {}", res);
+    let res: Result<String, std::io::Error> = fs::read_to_string(command);
+
+    println!("Command output: \n---------\n {}", res.to_string());
 }
-//TODO: FIX
+//TODO: FIX error handling of fake files
