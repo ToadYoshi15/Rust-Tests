@@ -12,7 +12,7 @@ fn main() {
     if res.is_ok() {
         println!("Command output: \n---------\n {}", res.unwrap());
     } else {
-        eprintln!("Error reading command file: {}", res.err().unwrap());
+        eprintln!("Error: {}", res.err().unwrap());
     }
 }
 //TODO: FIX error handling of fake files
