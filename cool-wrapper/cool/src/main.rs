@@ -9,7 +9,10 @@ fn main() {
     }
     let command = &args[1];
     let res: Result<String, std::io::Error> = fs::read_to_string(command);
-
-    println!("Command output: \n---------\n {}", res.to_string());
+    if res.is_ok() {
+        println!("Command output: \n---------\n {}", res.unwrap());
+    } else {
+        eprintln!("Error reading command file: {}", res.err().unwrap());
+    }
 }
 //TODO: FIX error handling of fake files
